@@ -1,38 +1,35 @@
 {
-  "_args": [
-    [
-      "react-native-atoz-list-assac@1.0.3",
-      "/home/daniel/assac-application"
-    ]
-  ],
-  "_from": "react-native-atoz-list-assac@1.0.3",
+  "_from": "react-native-atoz-list-assac@^1.0.3",
   "_id": "react-native-atoz-list-assac@1.0.3",
   "_inBundle": false,
   "_integrity": "sha512-P7HUp/S7MHJPDDk824D/K02yFJ5PMkS74JjTeo+CDKZ46WRlmDCmiVuNS6NcAFwcmbIWKqiT9YLTjX3cr7PBUQ==",
   "_location": "/react-native-atoz-list-assac",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "react-native-atoz-list-assac@1.0.3",
+    "raw": "react-native-atoz-list-assac@^1.0.3",
     "name": "react-native-atoz-list-assac",
     "escapedName": "react-native-atoz-list-assac",
-    "rawSpec": "1.0.3",
+    "rawSpec": "^1.0.3",
     "saveSpec": null,
-    "fetchSpec": "1.0.3"
+    "fetchSpec": "^1.0.3"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/react-native-atoz-list-assac/-/react-native-atoz-list-assac-1.0.3.tgz",
-  "_spec": "1.0.3",
-  "_where": "/home/daniel/assac-application",
+  "_shasum": "a2c1ea3a89137c2f3b984fc38208de8c31064944",
+  "_spec": "react-native-atoz-list-assac@^1.0.3",
+  "_where": "C:\\work\\assac-application",
   "author": {
     "name": "rgovindji@gmail.com"
   },
   "bugs": {
     "url": "https://github.com/rgovindji/react-native-atoz-list/issues"
   },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "High performance fixed height ListView to be used for a contact list or friends list in your application with some fixes, based on react-native-atoz-list",
   "devDependencies": {
     "babel-jest": "^12.0.2",

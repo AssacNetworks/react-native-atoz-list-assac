@@ -58,16 +58,24 @@ export default class AtoZList extends Component {
       alphabet: Object.keys(this.props.data),
       displayBubble: false,
       top: 0,
-      letter:"",
+      letter: "",
       height: this.props.bubbleHeight,
     };
 
     this.dataSource = dataSource;
   }
 
+  componentDidMount()
+  {
+    this.props.onRef(this)
+  }
+
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.data !== nextProps.data){
+    if (this.props.data !== nextProps.data) {
       this.setState({
         dataSource: this.dataSource.cloneWithCellsAndSections(nextProps.data),
         alphabet: Object.keys(nextProps.data)
@@ -76,24 +84,24 @@ export default class AtoZList extends Component {
   }
 
   change() {
-    this.setState({displayBubble:false})
+    this.setState({ displayBubble: false })
   }
 
   changeTop(top) {
     this.setState({
-      top:top - this.state.height
+      top: top - this.state.height
     })
   }
 
   render() {
     this._alphabetInstance = (
       <View style={styles.alphabetSidebar}>
-        <AlphabetPicker alphabet={this.state.alphabet} onTouchLetter={this._onTouchLetter.bind(this)} changeBubble={() => this.change()} changeTop={(top) => this.changeTop(top)}/>
+        <AlphabetPicker alphabet={this.state.alphabet} onTouchLetter={this._onTouchLetter.bind(this)} changeBubble={() => this.change()} changeTop={(top) => this.changeTop(top)} />
       </View>
     );
 
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <FixedHeightWindowedListView
             ref={view => this._listView = view}
@@ -109,24 +117,21 @@ export default class AtoZList extends Component {
             onEndReached={this.props.onEndReached}
           />
         </View>
-          {this._alphabetInstance}
-          {
-            this.state.displayBubble && 
-            <View style={[styles.alphabetBubble,{top:this.state.top, height: this.state.height, backgroundColor: this.props.bubbleColor}]}>
-              <Text style={styles.letterContainer}>
-                {this.state.letter}
-              </Text>
-            </View>
-          }
-            <TouchableOpacity onPress={() => alert("ADD")} style={styles.plusCircleContainer}>
-              <Image source={this.props.plusImage}/>
-            </TouchableOpacity>
+        {this._alphabetInstance}
+        {
+          this.state.displayBubble &&
+          <View style={[styles.alphabetBubble, { top: this.state.top, height: this.state.height, backgroundColor: this.props.bubbleColor }]}>
+            <Text style={styles.letterContainer}>
+              {this.state.letter}
+            </Text>
+          </View>
+        }
       </View>
     );
   }
 
   _onTouchLetter(letter) {
-    this.setState({letter:letter, displayBubble:true})
+    this.setState({ letter: letter, displayBubble: true })
     this._listView.scrollToSectionBuffered(letter);
   }
 }
@@ -150,20 +155,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   alphabetBubble: {
-    position:"absolute",
+    position: "absolute",
     borderRadius: 20,
-    borderStyle:"solid",
-    borderColor:'transparent',
-    borderBottomRightRadius:0,
-    borderBottomLeftRadius:20,
-    borderTopLeftRadius:20,
-    borderTopRightRadius:20,
+    borderStyle: "solid",
+    borderColor: 'transparent',
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     width: 45,
     right: 15
   },
   letterContainer: {
     top: "25%",
-    alignSelf:"center",
+    alignSelf: "center",
     color: "white"
   },
   plusCircleContainer: {
